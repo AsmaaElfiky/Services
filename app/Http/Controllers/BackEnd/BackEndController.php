@@ -11,8 +11,9 @@ class BackEndController extends controller{
     public function __construct(Model $model)
     {
         $this->model = $model;
-        $this->middleware('auth');
+
     }
+
 
 
 
@@ -23,12 +24,13 @@ class BackEndController extends controller{
         $pageDesc = "Add / Edit /Delete ".$moduleName;
         $SmoduleName=$this->getClassNameSingle();
         $routeName =$this->getClassName();
+        $folderName =$routeName;
         $rows = $this->model;
         $rows=$this->filter($rows);
         $rows =$rows->paginate(10);
 
         return view('back-end.'.$this->getClassName().'.index',
-            compact('rows','moduleName','pageDesc','SmoduleName','routeName'));
+            compact('rows','moduleName','pageDesc','SmoduleName','folderName','routeName'));
     }
 
 
@@ -37,16 +39,9 @@ class BackEndController extends controller{
         $pageDesc ="Here You Can " .$moduleName;
         $routeName =$this->getClassName();
         $folderName =$routeName;
-        $categories = DB::table('categories')->get();
-        $trips = DB::table('trips')->get();
-        $hotels = DB::table('hotels')->get();
-        $array=['hotels'=>[]];
-        if(request()->route()->parameter('Trip')){
-            $array['hotels'] = $this->model->find(request()->route()->parameter('Trip'))->hotels()->get()->pluck('id')->toArray();
-            $array =$array['hotels'];
 
-        }
-        return view('back-end.'.$this->getClassName().'.add',compact('moduleName','pageDesc','trips','hotels','array','categories','routeName','folderName'));
+
+        return view('back-end.'.$this->getClassName().'.add',compact('moduleName','pageDesc','routeName','folderName'));
 
     }
 
@@ -57,16 +52,9 @@ class BackEndController extends controller{
         $moduleName ='Update ' .$this->getClassNameSingle();
         $pageDesc = "Here You Can ".$moduleName;
         $row = $this->model->findorfail($id);
-        $categories = DB::table('categories')->get();
-        $trips = DB::table('trips')->get();
-        $hotels = DB::table('hotels')->get();
-        $array=['hotels'=>[]];
-        if(request()->route()->parameter('Trip')){
-          $array['hotels'] = $this->model->find(request()->route()->parameter('Trip'))->hotels()->get()->pluck('id')->toArray();
-           $array =$array['hotels'];
-          }
 
-        return view('back-end.'.$this->getClassName().'.edit')->with(compact('row','moduleName','array','hotels','trips','categories','pageDesc','routeName','folderName'));
+
+        return view('back-end.'.$this->getClassName().'.edit')->with(compact('row','moduleName','pageDesc','routeName','folderName'));
     }
 
 

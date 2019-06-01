@@ -6,11 +6,7 @@
 
 
 @section('content')
-    @component('back-end.layout.nav-bar')
-        @slot('nav_title')
-            {{$moduleName}}
-            @endslot
-    @endcomponent
+
 
     @component('back-end.shared.edit',['moduleName'=>$moduleName,'pageDesc'=>$pageDesc])
 

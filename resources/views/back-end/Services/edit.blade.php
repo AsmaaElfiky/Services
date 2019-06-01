@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-    Users
+   Services
 @endsection
 
 
@@ -14,9 +14,9 @@
 
             <form method="post" action="{{route($routeName.'.update',$row->id)}}" enctype="multipart/form-data">
                 @method('PATCH')
-            @include('back-end.Users.form')
+            @include('back-end.Services.form')
 
-                <button type="submit" class="btn btn-primary pull-right">Update User</button>
+                <button type="submit" class="btn btn-primary pull-right">Update Service</button>
                 <div class="clearfix"></div>
             </form>
 

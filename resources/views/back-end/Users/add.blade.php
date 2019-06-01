@@ -5,11 +5,7 @@
 @endsection
 
 @section('content')
-    @component('back-end.layout.nav-bar')
-        @slot('nav_title')
-            {{$moduleName}}
-            @endslot
-    @endcomponent
+
 
     <div class="container-fluid">
         <div class="row">
@@ -19,6 +15,7 @@
                            @include('back-end.'.$folderName.'.form')
 
                             <button type="submit" class="btn btn-primary pull-right">Add User</button>
+                   
                             <div class="clearfix"></div>
                         </form>
             @endcomponent

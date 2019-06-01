@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-  Users
+  Services
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                 <form method="post" action="{{route($routeName.'.store')}}" enctype="multipart/form-data">
                            @include('back-end.'.$folderName.'.form')
 
-                            <button type="submit" class="btn btn-primary pull-right">Add User</button>
+                            <button type="submit" class="btn btn-primary pull-right">Add Service</button>
                    
                             <div class="clearfix"></div>
                         </form>

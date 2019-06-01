@@ -4,14 +4,12 @@
    {{$moduleName}}
 @endsection
 
-
 @section('content')
-    @component('back-end.layout.nav-bar',['nav_title'=>'Users'])
-    @endcomponent
+
     @if(session()->get('success'))
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <i class="material-icons">close</i>
+            <i  class="icon ion-close"></i>
         </button>
         <span>
             <b>  {{ session()->get('success') }} </b> </span>
@@ -20,50 +18,42 @@
 @component('back-end.shared.table',['moduleName'=>$moduleName ,'pageDesc'=>$pageDesc])
     @slot('AddButton')
     <div class="col-md-4 text-right">
-        <a href="{{route($routeName.'.create')}}" class="btn btn-white btn-round">Add {{$SmoduleName}}</a>
+        <a href="{{route($routeName.'.create')}}" class="btn btn-primary btn-block mg-b-10">Add {{$SmoduleName}}</a>
+
     </div>
     @endslot
-    <div class="table-responsive">
-        <table class="table">
-            <thead class=" text-primary">
-            <tr><th>
-                    ID
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Email
-                </th>
-                <th style="text-align:center">
-                    Action
-                </th>
 
-            </tr></thead>
+    <div class="bd bd-gray-300 rounded table-responsive">
+        <table class="table table-striped mg-b-0">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
             <tbody>
+
             @foreach($rows as $row)
-                <tr>
-                    <td>
-                        {{$row->id}}
-                    </td>
-                    <td>
-                        {{$row->name}}
-                    </td>
-                    <td>
-                        {{$row->email}}
-                    </td>
-                    <td class="td-actions text-center">
-                      @include('back-end.shared.buttons.edit')
-                      @include('back-end.shared.buttons.delete')
+            <tr>
+                <td>
+                    {{$row->id}}
+                </td>
+                <td>
+                    {{$row->name}}
+                </td>
+                <td>
+                    {{$row->email}}
+                </td>
+                <td class="td-actions">
+                    @include('back-end.shared.buttons.edit')
+                    @include('back-end.shared.buttons.delete')
 
-                    </td>
+                </td>
 
-                </tr>
-
+            </tr>
             @endforeach
-
-
-
             </tbody>
         </table>
         {!! $rows->links() !!}

@@ -65,37 +65,27 @@ $input ="image";
         </div>
     </div>
 </div>
-
 <div class="row">
+    <div class="col-md-12">
+        @php
+            $input ="group";
+        @endphp
+        <div class="form-group bmd-form-group">
 
-    <div class="col-md-4">
-        <p class="card-category">Manage User Auth</p>
-        <div class="form-check">
-            <label class="form-check-label">Trips
-                <input class="form-check-input" type="checkbox" value="1" id="trips" name="trips" {{isset($row)&&$row->trips == 1 ? 'checked' : null }}>
-                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-            </label>
+            <label class="bmd-label-floating">Group</label>
+
+            <select id="" name="{{$input}}" class="form-control" value=" old($input)}}">
+
+                    <option class="form-control  dark-edition" {{isset($row)&&$row->{$input}=='admin' ?'selected':''}} value="admin" >Admin</option>
+                    <option class="form-control  dark-edition" {{isset($row)&&$row->{$input}=='user' ?'selected':''}} value="user">User</option>
+
+            </select>
+            @if ($errors->has($input))
+                <span class="help-block small text-danger">{{$errors->first($input)}}</span>
+
+            @endif
         </div>
-        <div class="form-check">
-            <label class="form-check-label">Categories
-                <input class="form-check-input" type="checkbox" value="1" id="categories" name="categories" {{isset($row)&&$row->categories == 1 ? 'checked' : null }}>
-                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">Customers
-                <input class="form-check-input" type="checkbox" value="1" id="customers" name="customers" {{isset($row)&&$row->customers == 1 ? 'checked' : null }}>
-                <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-            </label>
-        </div>
+    </div>
     </div>
 
 
-
-</div>

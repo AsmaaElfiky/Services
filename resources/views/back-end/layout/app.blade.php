@@ -1,246 +1,143 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
-    <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-      @yield('title')
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket Plus">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracketplus">
+    <meta property="og:title" content="Bracket Plus">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <title>@yield('title')</title>
+
+    <!-- vendor css -->
+    <link href="{{asset('assets/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/lib/select2/css/select2.min.css')}}" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/bracket.css')}}">
 </head>
 
-<body class="dark-edition">
-<div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="black" data-image="assets/img/sidebar-2.jpg">
-        <!--
-          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-          Tip 2: you can also add an image using data-image tag
-      -->
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
-            </a>
-        </div>
-        <div class="sidebar-wrapper">
-          @include('back-end.layout.side-bar')
-        </div>
-    </div>
-    <div class="main-panel">
-        <!-- Navbar -->
-     {{--@include('back-end.layout.nav-bar')--}}
-        <!-- End Navbar -->
-        <div class="content">
-            <div class="container-fluid">
-                @yield('content')
-            </div>
-        </div>
-       @include('back-end.layout.footer')
-        <script>
-            const x = new Date().getFullYear();
-            let date = document.getElementById('date');
-            date.innerHTML = '&copy; ' + x + date.innerHTML;
-        </script>
-    </div>
+<body>
+
+<!-- ########## START: LEFT PANEL ########## -->
+<div class="br-logo"><a href=""><span>[</span>bracket <i>plus</i><span>]</span></a></div>
+
+@include('back-end.layout.side-left')
+<!-- ########## END: LEFT PANEL ########## -->
+
+<!-- ########## START: HEAD PANEL ########## -->
+<div class="br-header">
+
+@include('back-end.layout.header-left')
+    <!-- br-header-left -->
+    <div class="br-header-right">
+
+        @include('back-end.layout.nav-bar')
+       <!-- navicon-right -->
+    </div><!-- br-header-right -->
 </div>
 
-<!--   Core JS Files   -->
-<script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
-<script src="{{asset('assets/js/core/popper.min.js')}}"></script>
-<script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
-<script src="https://unpkg.com/default-passive-events"></script>
-<script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- br-header -->
+<!-- ########## END: HEAD PANEL ########## -->
 
-<!-- Chartist JS -->
-<script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
-<!--  Notifications Plugin    -->
-<script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('assets/js/material-dashboard.js?v=2.1.0')}}"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{asset('assets/demo/demo.js')}}"></script>
+<!-- ########## START: RIGHT PANEL ########## -->
+
+<!-- ########## END: RIGHT PANEL ########## --->
+
+<!-- ########## START: MAIN PANEL ########## -->
+<div class="br-mainpanel">
+
+<br>
+    <div class="br-pagebody">
+
+
+            @yield('content')
+
+
+    </div><!-- br-pagebody -->
+
+
+
+   {{--@include('back-end.layout.footer')--}}
+</div><!-- br-mainpanel -->
+<!-- ########## END: MAIN PANEL ########## -->
+
+<script src="{{asset('assets/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/lib/jquery-ui/ui/widgets/datepicker.js')}}"></script>
+<script src="{{asset('assets/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/lib/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset('assets/lib/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('assets/lib/peity/jquery.peity.min.js')}}"></script>
+<script src="{{asset('assets/lib/rickshaw/vendor/d3.min.js')}}"></script>
+<script src="{{asset('assets/lib/rickshaw/vendor/d3.layout.min.js')}}"></script>
+<script src="{{asset('assets/lib/rickshaw/rickshaw.min.js')}}"></script>
+<script src="{{asset('assets/lib/jquery.flot/jquery.flot.js')}}"></script>
+<script src="{{asset('assets/lib/jquery.flot/jquery.flot.resize.js')}}"></script>
+<script src="{{asset('assets/lib/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+<script src="{{asset('assets/lib/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="{{asset('assets/lib/echarts/echarts.min.js')}}"></script>
+<script src="{{asset('assets/lib/select2/js/select2.full.min.js')}}"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
+<script src="{{asset('assets/lib/gmaps/gmaps.min.js')}}"></script>
+
+<script src="{{asset('assets/js/bracket.js')}}"></script>
+<script src="{{asset('assets/js/map.shiftworker.js')}}"></script>
+<script src="{{asset('assets/js/ResizeSensor.js')}}"></script>
+<script src="{{asset('assets/js/dashboard.js')}}"></script>
+
 <script>
-    $(document).ready(function() {
-        $().ready(function() {
-            $sidebar = $('.sidebar');
+    $(function(){
+        'use strict'
 
-            $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-            $full_page = $('.full-page');
-
-            $sidebar_responsive = $('body > .navbar-collapse');
-
-            window_width = $(window).width();
-
-            $('.fixed-plugin a').click(function(event) {
-                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                if ($(this).hasClass('switch-trigger')) {
-                    if (event.stopPropagation) {
-                        event.stopPropagation();
-                    } else if (window.event) {
-                        window.event.cancelBubble = true;
-                    }
-                }
-            });
-
-            $('.fixed-plugin .active-color span').click(function() {
-                $full_page_background = $('.full-page-background');
-
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-
-                var new_color = $(this).data('color');
-
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-color', new_color);
-                }
-
-                if ($full_page.length != 0) {
-                    $full_page.attr('filter-color', new_color);
-                }
-
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.attr('data-color', new_color);
-                }
-            });
-
-            $('.fixed-plugin .background-color .badge').click(function() {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-
-                var new_color = $(this).data('background-color');
-
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-background-color', new_color);
-                }
-            });
-
-            $('.fixed-plugin .img-holder').click(function() {
-                $full_page_background = $('.full-page-background');
-
-                $(this).parent('li').siblings().removeClass('active');
-                $(this).parent('li').addClass('active');
-
-
-                var new_image = $(this).find("img").attr('src');
-
-                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    $sidebar_img_container.fadeOut('fast', function() {
-                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $sidebar_img_container.fadeIn('fast');
-                    });
-                }
-
-                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-                    $full_page_background.fadeOut('fast', function() {
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                        $full_page_background.fadeIn('fast');
-                    });
-                }
-
-                if ($('.switch-sidebar-image input:checked').length == 0) {
-                    var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                    $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                }
-
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                }
-            });
-
-            $('.switch-sidebar-image input').change(function() {
-                $full_page_background = $('.full-page-background');
-
-                $input = $(this);
-
-                if ($input.is(':checked')) {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar_img_container.fadeIn('fast');
-                        $sidebar.attr('data-image', '#');
-                    }
-
-                    if ($full_page_background.length != 0) {
-                        $full_page_background.fadeIn('fast');
-                        $full_page.attr('data-image', '#');
-                    }
-
-                    background_image = true;
-                } else {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar.removeAttr('data-image');
-                        $sidebar_img_container.fadeOut('fast');
-                    }
-
-                    if ($full_page_background.length != 0) {
-                        $full_page.removeAttr('data-image', '#');
-                        $full_page_background.fadeOut('fast');
-                    }
-
-                    background_image = false;
-                }
-            });
-
-            $('.switch-sidebar-mini input').change(function() {
-                $body = $('body');
-
-                $input = $(this);
-
-                if (md.misc.sidebar_mini_active == true) {
-                    $('body').removeClass('sidebar-mini');
-                    md.misc.sidebar_mini_active = false;
-
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-                } else {
-
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-                    setTimeout(function() {
-                        $('body').addClass('sidebar-mini');
-
-                        md.misc.sidebar_mini_active = true;
-                    }, 300);
-                }
-
-                // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function() {
-                    window.dispatchEvent(new Event('resize'));
-                }, 180);
-
-                // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function() {
-                    clearInterval(simulateWindowResize);
-                }, 1000);
-
-            });
+        // FOR DEMO ONLY
+        // menu collapsed by default during first page load or refresh with screen
+        // having a size between 992px and 1299px. This is intended on this page only
+        // for better viewing of widgets demo.
+        $(window).resize(function(){
+            minimizeMenu();
         });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
 
+        minimizeMenu();
+
+        function minimizeMenu() {
+            if(window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+                // show only the icons and hide left menu label by default
+                $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
+                $('body').addClass('collapsed-menu');
+                $('.show-sub + .br-menu-sub').slideUp();
+            } else if(window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+                $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
+                $('body').removeClass('collapsed-menu');
+                $('.show-sub + .br-menu-sub').slideDown();
+            }
+        }
     });
 </script>
 </body>
-
 </html>

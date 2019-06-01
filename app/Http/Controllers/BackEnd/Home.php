@@ -13,8 +13,16 @@ class Home extends BackEndController
     {
         parent::__construct($model);
     }
+
+
     public function home(){
 
     return view('back-end.home');
+    }
+
+
+    public function index(){
+
+        return view('front-end.Services.index');
     }
 }

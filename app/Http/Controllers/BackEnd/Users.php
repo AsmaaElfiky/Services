@@ -18,6 +18,8 @@ class Users extends BackEndController
     }
 
 
+
+
     public function store(StoreRequest $request){
 
         $input = $request->all();

@@ -35,12 +35,12 @@ $input ="image";
     </div>
     <div class="col-md-6">
         @php
-            $input ="password";
+            $input ="order";
         @endphp
         <div class="form-group bmd-form-group">
 
-            <label class="bmd-label-floating">Password</label>
-            <input type="password" class="form-control" name="{{$input}}">
+            <label class="bmd-label-floating">order</label>
+            <input type="text" class="form-control" name="{{$input}}">
             @if ($errors->has($input))
                 <span class="help-block small text-danger">{{$errors->first($input)}}</span>
 
@@ -48,21 +48,5 @@ $input ="image";
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        @php
-            $input ="email";
-        @endphp
-        <div class="form-group bmd-form-group">
 
-            <label class="bmd-label-floating">Email</label>
-
-            <input type="email" class="form-control" name="email" value="{{isset($row)? $row->$input : old($input)}}">
-            @if ($errors->has($input))
-                <span class="help-block small text-danger">{{$errors->first($input)}}</span>
-
-            @endif
-        </div>
-    </div>
-</div>
 

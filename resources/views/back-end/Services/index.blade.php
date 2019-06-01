@@ -29,7 +29,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Email</th>
+                <th>image</th>
+                <th>Order</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -44,7 +45,10 @@
                     {{$row->name}}
                 </td>
                 <td>
-                    {{$row->email}}
+                  <img src="{{url($row->image)}}" width="80px" height="80px">
+                </td>
+                <td>
+                    {{$row->order}}
                 </td>
                 <td class="td-actions">
                     @include('back-end.shared.buttons.edit')

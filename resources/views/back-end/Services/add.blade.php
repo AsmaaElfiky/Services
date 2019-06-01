@@ -1,15 +1,11 @@
 @extends('back-end.layout.app')
 
 @section('title')
-    {{$moduleName}}
+  Users
 @endsection
 
 @section('content')
-    @component('back-end.layout.nav-bar')
-        @slot('nav_title')
-            {{$moduleName}}
-            @endslot
-    @endcomponent
+
 
     <div class="container-fluid">
         <div class="row">
@@ -18,7 +14,8 @@
                 <form method="post" action="{{route($routeName.'.store')}}" enctype="multipart/form-data">
                            @include('back-end.'.$folderName.'.form')
 
-                            <button type="submit" class="btn btn-primary pull-right"> {{$moduleName}}</button>
+                            <button type="submit" class="btn btn-primary pull-right">Add User</button>
+                   
                             <div class="clearfix"></div>
                         </form>
             @endcomponent

@@ -1,5 +1,23 @@
 @csrf
+<div class="row">
+@php
+$input ="image";
+@endphp
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <input onerror="this.style.display='none'" type='file' onchange="readURL(this);"
+                   class="form-control wow bounceInRight" type="file" name="{{$input}}" >
+            @if ($errors->has($input))
+                <span class="help-block small text-danger">{{$errors->first($input)}}</span>
 
+            @endif
+            <div class="card-avatar">
+                <img class="img" id="blah" src="{{isset($row)?url($row->$input): ''}}">
+            </div>
+        </div>
+
+    </div>
+</div>
 <div class="row">
     @php
         $input ="name";
@@ -17,12 +35,12 @@
     </div>
     <div class="col-md-6">
         @php
-            $input ="meta_keywords";
+            $input ="password";
         @endphp
         <div class="form-group bmd-form-group">
 
-            <label class="bmd-label-floating">Meta Keywords</label>
-            <input type="text" class="form-control" name="{{$input}}" value="{{isset($row)? $row->$input : old($input)}}">
+            <label class="bmd-label-floating">Password</label>
+            <input type="password" class="form-control" name="{{$input}}">
             @if ($errors->has($input))
                 <span class="help-block small text-danger">{{$errors->first($input)}}</span>
 
@@ -33,12 +51,13 @@
 <div class="row">
     <div class="col-md-12">
         @php
-            $input ="meta_des";
+            $input ="email";
         @endphp
         <div class="form-group bmd-form-group">
 
-            <label class="bmd-label-floating">Meta Description</label>
-<textarea name="{{$input}}" class="form-control" >{{isset($row)? $row->$input : old($input)}}</textarea>
+            <label class="bmd-label-floating">Email</label>
+
+            <input type="email" class="form-control" name="email" value="{{isset($row)? $row->$input : old($input)}}">
             @if ($errors->has($input))
                 <span class="help-block small text-danger">{{$errors->first($input)}}</span>
 
@@ -46,5 +65,4 @@
         </div>
     </div>
 </div>
-
 

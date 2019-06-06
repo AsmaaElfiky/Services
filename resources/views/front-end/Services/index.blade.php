@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Services</div>
+                    <div class="card-header">@lang('site.services_header')</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -18,9 +18,9 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>image</th>
-                                        <th>Order</th>
+                                        <th>@lang('site.services_table_name')</th>
+                                        <th>@lang('site.services_table_image')</th>
+                                        <th>@lang('site.services_table_order')</th>
 
                                     </tr>
                                     </thead>

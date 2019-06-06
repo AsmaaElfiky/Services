@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -45,22 +45,22 @@
 
     <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
         <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> bracket <span class="tx-info">plus</span> <span class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-60">The Admin Template For Perfectionist</div>
+        <div class="tx-center mg-b-60">@lang('site.login_form_template')</div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
         <div class="form-group">
-            <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Enter your Email">
+            <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="@lang('site.login_form_email_address_placeholder')">
         </div><!-- form-group -->
         <div class="form-group">
-            <input type="password"  name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Enter your password">
+            <input type="password"  name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="@lang('site.login_form_password_placeholder')">
 
             @if (Route::has('password.request'))
                 <a class="tx-info tx-12 d-block mg-t-10" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
+                   @lang('site.login_form_forgot_password_text') 
                 </a>
             @endif
         </div><!-- form-group -->
-        <button type="submit" class="btn btn-info btn-block">Sign In</button>
+        <button type="submit" class="btn btn-info btn-block">@lang('site.login_form_sign_in_button')</button>
         </form>
 
     </div><!-- login-wrapper -->

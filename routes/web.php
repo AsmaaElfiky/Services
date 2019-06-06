@@ -13,11 +13,23 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Input;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['middleware' => ['auth']], function () {
 
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+});
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth' ]], function(){
+
+    
     Route::get('/', 'FrontEnd\Services@index');
 Route::namespace('BackEnd')->prefix('admin')->middleware('admin')->group(function() {
 
@@ -40,13 +52,13 @@ Route::namespace('BackEnd')->prefix('admin')->middleware('admin')->group(functio
     });
 
 
+});
 
 
 
 });
 
 
-});
 
 
 

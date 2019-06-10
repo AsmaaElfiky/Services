@@ -14,7 +14,7 @@ return[
         'services_table_image'=>'صورة الخدمة ',
         'services_table_order'=>'رقم الخدمة ',
 
-
+        'detailsactions'=>'اضافة  / تعديل /حذف ',
 
         
 ];

@@ -16,6 +16,9 @@ return[
     'services_table_name'=>'Name',
     'services_table_image'=>'image',
     'services_table_order'=>'order',
+
+
+    'detailsactions'=>'Add / Edit /Delete ',
     
    
    

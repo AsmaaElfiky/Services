@@ -1,7 +1,8 @@
 @extends('back-end.layout.app')
 
 @section('title')
-   {{$moduleName}}
+
+    @lang('site.services_header')
 @endsection
 
 @section('content')
@@ -28,9 +29,9 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>image</th>
-                <th>Order</th>
+                <th>@lang('site.services_table_name')</th>
+                <th>@lang('site.services_table_image')</th>
+                <th>@lang('site.services_table_order')</th>
                 <th>Action</th>
             </tr>
             </thead>

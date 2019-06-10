@@ -20,8 +20,8 @@ class BackEndController extends controller{
     public  function  index(){
 
         $moduleName =$this->getClassName();
-
-        $pageDesc = "Add / Edit /Delete ".$moduleName;
+      
+        $pageDesc = (\App::isLocale('ar') ? 'اضافة /حذف /تعديل ' : 'Add / Edit /Delete');
         $SmoduleName=$this->getClassNameSingle();
         $routeName =$this->getClassName();
         $folderName =$routeName;
@@ -35,8 +35,8 @@ class BackEndController extends controller{
 
 
     public function create(){
-        $moduleName ='Create ' .$this->getClassNameSingle();
-        $pageDesc ="Here You Can " .$moduleName;
+        $moduleName =(\App::isLocale('ar') ? 'اضافة' : 'Create') .$this->getClassNameSingle();
+        $pageDesc =(\App::isLocale('ar') ? 'هنا يمكنك ' : 'Here You Can') .$moduleName;
         $routeName =$this->getClassName();
         $folderName =$routeName;
 

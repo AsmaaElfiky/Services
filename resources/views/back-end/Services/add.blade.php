@@ -1,28 +1,43 @@
 @extends('back-end.layout.app')
 
 @section('title')
-  Services
+  @lang('page_title.services')
 @endsection
 
 @section('content')
 
+    @PageHeader([
 
-    <div class="container-fluid">
+    'pageTitle' => 'page_title.services',
+    'pageDescription' => 'page_description.create',
+    'actions' => [
+    ['type' => 'Create', 'route' => route('Services.create')],
+
+    ],
+    'back'=>['page_title'=>'page_title.services','route'=>route('Services.index')]
+    ])
+    @endPageHeader
+
+
         <div class="row">
 
-            @component('back-end.shared.create',['moduleName'=>$moduleName,'pageDesc'=>$pageDesc])
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
                 <form method="post" action="{{route($routeName.'.store')}}" enctype="multipart/form-data">
                            @include('back-end.'.$folderName.'.form')
 
-                            <button type="submit" class="btn btn-primary pull-right">Add Service</button>
-                   
+           @Button(['type'=>'submit',
+                    'Single_title'=>'page_title.service'
+                    ])
+                    @endButton
                             <div class="clearfix"></div>
-                        </form>
-            @endcomponent
+                </form>
+                    </div>
+                </div>
 
-
+            </div>
         </div>
-    </div>
 
     <script>
 

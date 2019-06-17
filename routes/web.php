@@ -29,7 +29,7 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth' ]], function(){
 
-    
+
     Route::get('/', 'FrontEnd\Services@index');
 Route::namespace('BackEnd')->prefix('admin')->middleware('admin')->group(function() {
 

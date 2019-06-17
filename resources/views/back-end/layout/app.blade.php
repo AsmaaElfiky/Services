@@ -40,6 +40,8 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/bracket.css')}}">
+
+
 </head>
 
 

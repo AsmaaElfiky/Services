@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-   {{$moduleName}}
+    @lang('page_title.services')
 @endsection
 
 @section('content')
@@ -15,14 +15,23 @@
             <b>  {{ session()->get('success') }} </b> </span>
     </div>
     @endif
-@component('back-end.shared.table',['moduleName'=>$moduleName ,'pageDesc'=>$pageDesc])
-    @slot('AddButton')
-    <div class="col-md-4 text-right">
-        <a href="{{route($routeName.'.create')}}" class="btn btn-primary btn-block mg-b-10">Add {{$SmoduleName}}</a>
 
-    </div>
-    @endslot
 
+    @PageHeader([
+
+    'pageTitle' => 'page_title.services',
+    'pageDescription' => 'page_description.update',
+    'Single_title'=>'page_title.service',
+    'actions' => [
+    ['type' => 'Create', 'route' => route('Services.create')],
+
+    ]
+    ])
+    @endPageHeader
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+<div class="card-body">
     <div class="bd bd-gray-300 rounded table-responsive">
         <table class="table table-striped mg-b-0">
             <thead>
@@ -60,7 +69,13 @@
             @endforeach
             </tbody>
         </table>
+
         {!! $rows->links() !!}
     </div>
-    @endcomponent
+</div>
+</div>
+</div>
+</div>
+
+
 @endsection

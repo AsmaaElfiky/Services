@@ -15,8 +15,6 @@ class BackEndController extends controller{
     }
 
 
-
-
     public  function  index(){
 
         $moduleName =$this->getClassName();

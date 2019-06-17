@@ -1,6 +1,7 @@
 <nav class="nav">
 
     <div class="dropdown">
+
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <span class="logged-name hidden-md-down">{{Auth::user()->name}}</span>
             <img src="{{url(Auth::user()->image)}}" class="wd-32 rounded-circle" alt="">
@@ -29,5 +30,8 @@
                  </li>
             </ul>
         </div><!-- dropdown-menu -->
+
     </div><!-- dropdown -->
+
 </nav>
+

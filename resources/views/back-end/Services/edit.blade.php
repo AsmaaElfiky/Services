@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-   Services
+    @lang('page_title.services')
 @endsection
 
 

@@ -14,6 +14,7 @@ class Users extends BackEndController
 
     public function __construct(User $model)
     {
+
         parent::__construct($model);
     }
 

@@ -19,6 +19,10 @@
                             <div class="col-md-4 text-right">
                         <a href="{{ $action['route'] }}" class="btn btn-primary btn-block mg-b-10">@lang('actions.add',['page_title' => __($Single_title)])  </a>
                             </div>
+                    {{--  @elseif($action['type'] === 'update')
+                            <div class="col-md-4 text-right">
+                        <a href="{{ $action['route'] }}" class="btn btn-primary btn-block mg-b-10">@lang('actions.update',['page_title' => __($Single_title)])  </a>
+                            </div>  --}}
                         @endif
                         @endforeach
                         @endif

@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-    @lang('page_title.services')
+    @lang('page_title.serviceCategories')
 @endsection
 
 @section('content')
@@ -19,11 +19,11 @@
 
     @PageHeader([
 
-    'pageTitle' => 'page_title.services',
+    'pageTitle' => 'page_title.serviceCategories',
     'pageDescription' => 'page_description.update',
-    'Single_title'=>'page_title.service',
+    'Single_title'=>'page_title.serviceCategory',
     'actions' => [
-    ['type' => 'Create', 'route' => route('Services.create')],
+    ['type' => 'Create', 'route' => route('Categories.create')],
 
     ]
     ])
@@ -37,32 +37,20 @@
             <thead>
             <tr>
                 <th>@lang('tables.table_id')</th>
-                <th>@lang('tables.table_item_name')</th>
-                <th>@lang('tables.table_item_image')</th>
-                <th>@lang('tables.table_item_order')</th>
-                <th>@lang('tables.table_item_category')</th>
+                <th>@lang('tables.table_item_category_name')</th>
+
                 <th>@lang('tables.table_item_action')</th>
             </tr>
             </thead>
             <tbody>
 
             @foreach($rows as $row)
-
             <tr>
                 <td>
                     {{$row->id}}
                 </td>
                 <td>
-                    {{$row->name}}
-                </td>
-                <td>
-                  <img src="{{url($row->image)}}" width="80px" height="80px">
-                </td>
-                <td>
-                    {{$row->order}}
-                </td>
-                <td>
-                    {{ $row->ServiceCategories->category_name }}
+                    {{$row->category_name}}
                 </td>
 
                 <td class="td-actions">

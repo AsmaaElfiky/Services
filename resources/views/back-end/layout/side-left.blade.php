@@ -15,10 +15,16 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="{{URL::to('admin/Services')}}" class="br-menu-link">
+             <a href="#" class="br-menu-link with-sub">
                 <i class="menu-item-icon icon ion-ios-list-outline tx-24"></i>
-                <span class="menu-item-label">{{App::islocale('en')? 'Services':'الخدمات'}}</span>
-            </a><!-- br-menu-link -->
+                <span class="menu-item-label">{{ App::islocale('en')?'Services':'الخدمات' }}</span>
+             </a>
+        <ul class="br-menu-sub">
+             <li class="sub-item"><a href="{{URL::to('admin/Services')}}" class="sub-link">
+            {{ App::islocale('en')?'Services':'الخدمات' }}
+                </a>
+             </li>
+        <li class="sub-item"><a href="{{URL::to('admin/Services/Categories')}}" class="sub-link">{{ App::islocale('en')?'Service Categories':'تصنيفات الخدمات' }}</a></li>
         </li><!-- br-menu-item -->
 
     </ul><!-- br-sideleft-menu -->

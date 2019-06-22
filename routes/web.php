@@ -31,12 +31,14 @@ Route::group([
 
 
     Route::get('/', 'FrontEnd\Services@index');
-Route::namespace('BackEnd')->prefix('admin')->middleware('admin')->group(function() {
+Route::namespace('BackEnd')->prefix('admin')->group(function() {
 
     Route::get('/', 'Home@home')->name('admin.home');
 
         Route::resource('Users', 'Users')->except(['show']);
         Route::resource('Services', 'Services')->except(['show']);
+
+        Route::resource('Services/Categories', 'ServiceCategories')->except(['show']);
 
 
     Route::post ('/search', function () {

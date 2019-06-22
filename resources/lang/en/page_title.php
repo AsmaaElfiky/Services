@@ -6,6 +6,8 @@ return [
     'services' => ' Services',
     'service' => ' Service',
     'users' => ' Users',
+    'serviceCategories'=>'Service Categories',
+    'serviceCategory'=>'Service Category'
 
 
 ];

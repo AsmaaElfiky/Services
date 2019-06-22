@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-    @lang('page_title.services')
+    @lang('page_title.serviceCategories')
 @endsection
 
 
@@ -9,10 +9,10 @@
 
     @PageHeader([
 
-    'pageTitle' => 'page_title.service',
+    'pageTitle' => 'page_title.serviceCategory',
     'pageDescription' => 'page_description.update',
 
-    'back'=>['page_title'=>'page_title.services','route'=>route('Services.index')]
+    'back'=>['page_title'=>'page_title.serviceCategories','route'=>route('Categories.index')]
     ])
     @endPageHeader
 
@@ -25,10 +25,10 @@
 
             <form method="post" action="{{route($routeName.'.update',$row->id)}}" enctype="multipart/form-data">
                 @method('PATCH')
-            @include('back-end.Services.form')
+            @include('back-end.ServiceCategories.form')
 
                 @Button(['type'=>'update',
-                'Single_title'=>'page_title.service'
+                'Single_title'=>'page_title.serviceCategory'
                 ])
                 @endButton
                 <div class="clearfix"></div>

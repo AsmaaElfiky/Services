@@ -12,7 +12,7 @@ $input ="image";
 
             @endif
             <div class="card-avatar">
-                <img class="img" id="blah" src="{{isset($row)?url($row->$input): ''}}">
+                <img class="img" width="150px" height="150px" id="blah" src="{{isset($row)?url($row->$input): ''}}">
             </div>
         </div>
 
@@ -41,6 +41,26 @@ $input ="image";
 
             <label class="bmd-label-floating">order</label>
             <input type="text" class="form-control" name="{{$input}}">
+            @if ($errors->has($input))
+                <span class="help-block small text-danger">{{$errors->first($input)}}</span>
+
+            @endif
+        </div>
+    </div>
+    <div class="col-md-6">
+        @php
+            $input ="category_id";
+        @endphp
+        <div class="form-group bmd-form-group">
+
+            <label class="bmd-label-floating">Category</label>
+            <select class="form-control" name="{{$input}}" value="{{isset($row)? $row->$input : old($input)}}">
+                @foreach ($ServiceCategories as $cat)
+                <option value="{{ $cat->id }}" >
+                     {{ $cat->category_name }}
+                 </option>
+                @endforeach
+            </select>
             @if ($errors->has($input))
                 <span class="help-block small text-danger">{{$errors->first($input)}}</span>
 

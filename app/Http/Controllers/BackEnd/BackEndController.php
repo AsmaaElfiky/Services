@@ -19,7 +19,7 @@ class BackEndController extends controller{
 
         $moduleName =$this->getClassName();
 
-        $pageDesc = "Add / Edit /Delete ".$moduleName;
+
         $SmoduleName=$this->getClassNameSingle();
         $routeName =$this->getClassName();
         $folderName =$routeName;
@@ -28,18 +28,18 @@ class BackEndController extends controller{
         $rows =$rows->paginate(10);
 
         return view('back-end.'.$this->getClassName().'.index',
-            compact('rows','moduleName','pageDesc','SmoduleName','folderName','routeName'));
+            compact('rows','moduleName','SmoduleName','folderName','routeName'));
     }
 
 
     public function create(){
-        $moduleName ='Create ' .$this->getClassNameSingle();
-        $pageDesc ="Here You Can " .$moduleName;
+
+
         $routeName =$this->getClassName();
         $folderName =$routeName;
 
 
-        return view('back-end.'.$this->getClassName().'.add',compact('moduleName','pageDesc','routeName','folderName'));
+        return view('back-end.'.$this->getClassName().'.add',compact('routeName','folderName'));
 
     }
 

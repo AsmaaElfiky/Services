@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
-   {{$moduleName}}
+    @lang('page_title.users')
 @endsection
 
 @section('content')
@@ -15,22 +15,29 @@
             <b>  {{ session()->get('success') }} </b> </span>
     </div>
     @endif
-@component('back-end.shared.table',['moduleName'=>$moduleName ,'pageDesc'=>$pageDesc])
-    @slot('AddButton')
-    <div class="col-md-4 text-right">
-        <a href="{{route($routeName.'.create')}}" class="btn btn-primary btn-block mg-b-10">Add {{$SmoduleName}}</a>
+    @PageHeader([
 
-    </div>
-    @endslot
+        'pageTitle' => 'page_title.users',
+        'pageDescription' => 'page_description.update',
+        'Single_title'=>'page_title.user',
+        'actions' => [
+        ['type' => 'Create', 'route' => route('Users.create')],
 
+        ]
+        ])
+        @endPageHeader
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+    <div class="card-body">
     <div class="bd bd-gray-300 rounded table-responsive">
         <table class="table table-striped mg-b-0">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Action</th>
+                <th>@lang('tables.table_id')</th>
+                <th>@lang('tables.table_item_user_name')</th>
+                <th>@lang('tables.table_item_user_email')</th>
+                <th>@lang('tables.table_item_action')</th>
             </tr>
             </thead>
             <tbody>
@@ -38,17 +45,27 @@
             @foreach($rows as $row)
             <tr>
                 <td>
-                    {{$row->id}}
+                    {{ $row->id}}
                 </td>
                 <td>
-                    {{$row->name}}
+                    {{ $row->name}}
                 </td>
                 <td>
                     {{$row->email}}
                 </td>
                 <td class="td-actions">
-                    @include('back-end.shared.buttons.edit')
-                    @include('back-end.shared.buttons.delete')
+
+                    @Button([
+                        'type' => 'Edit',
+                        'Single_title'=>'page_title.user',
+                        'route' => route('Users.edit', $row->id)
+                    ])
+                    @endButton
+
+                    @Button(['type' => 'Delete',
+                        'Single_title'=>'page_title.user',
+                        'route' => route('Users.destroy', $row->id)
+                    ])@endButton
 
                 </td>
 
@@ -58,5 +75,9 @@
         </table>
         {!! $rows->links() !!}
     </div>
-    @endcomponent
+    </div>
+    </div>
+    </div>
+
+
 @endsection

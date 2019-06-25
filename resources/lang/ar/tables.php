@@ -12,4 +12,9 @@ return [
 
     'table_item_category_name' =>'التصنيف',
 
+
+    'table_item_user_name' => 'الاسم',
+    'table_item_user_email' =>'البريد الالكتروني ',
+
+
 ];

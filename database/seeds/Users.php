@@ -16,7 +16,6 @@ class Users extends Seeder
             'id' => 1,
             'image' => 'images/400.jpg',
             'name' => 'Asmaa',
-            'group' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('0123456789'),
             'remember_token' => str_random(10),

@@ -1,24 +1,39 @@
 @extends('back-end.layout.app')
 
 @section('title')
-  Users
+  @lang('page_title.users')
 @endsection
 
 @section('content')
+@PageHeader([
 
+    'pageTitle' => 'page_title.user',
+    'pageDescription' => 'page_description.create',
+    'actions' => [
+    ['type' => 'Create', 'route' => route('Users.create')],
 
-    <div class="container-fluid">
+    ],
+    'back'=>['page_title'=>'page_title.users','route'=>route('Users.index')]
+    ])
+    @endPageHeader
+
         <div class="row">
 
-            @component('back-end.shared.create',['moduleName'=>$moduleName,'pageDesc'=>$pageDesc])
-                <form method="post" action="{{route($routeName.'.store')}}" enctype="multipart/form-data">
-                           @include('back-end.'.$folderName.'.form')
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                <form method="post" action="{{route('Users.store')}}" enctype="multipart/form-data">
+                           @include('back-end.Users.form')
 
-                            <button type="submit" class="btn btn-primary pull-right">Add User</button>
-                   
+           @Button(['type'=>'submit',
+                    'Single_title'=>'page_title.user'
+                    ])
+                    @endButton
                             <div class="clearfix"></div>
-                        </form>
-            @endcomponent
+                </form>
+
+            </div>
+        </div>
 
 
         </div>

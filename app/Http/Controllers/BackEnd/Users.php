@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\BackEnd;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\BackEnd\Users\StoreRequest;
 use App\Http\Requests\BackEnd\Users\UpdateRequest;
@@ -9,13 +10,37 @@ use Hash;
 
 
 
-class Users extends BackEndController
+class Users extends Controller
 {
 
     public function __construct(User $model)
     {
 
-        parent::__construct($model);
+        $this->model = $model;
+    }
+
+
+    public  function  index(){
+
+        $rows = $this->model;
+        $rows =$rows->paginate(10);
+        return view('back-end.Users.index',compact('rows'));
+    }
+
+
+
+    public function create(){
+
+        return view('back-end.Users.add');
+
+    }
+
+
+    public function edit($id){
+
+        $row = $this->model->findorfail($id);
+
+        return view('back-end.Users.edit')->with(compact('row'));
     }
 
 

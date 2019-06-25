@@ -12,7 +12,7 @@ $input ="image";
 
             @endif
             <div class="card-avatar">
-                <img class="img" width="150px" height="150px" id="blah" src="{{isset($row)?url($row->$input): ''}}">
+                <img class="img" width="150px" height="150px" id="blah" src="{{isset($row)?asset('storage/'.$row->$input): ''}}">
             </div>
         </div>
 

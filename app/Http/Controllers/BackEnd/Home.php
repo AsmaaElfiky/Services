@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\BackEnd;
-
+use App\Http\Controllers\Controller;
 
 use App\Models\User;
 
-class Home extends BackEndController
+class Home extends Controller
 {
 
 
     public function __construct(User $model)
     {
-        parent::__construct($model);
+        $this->model = $model;
     }
 
 

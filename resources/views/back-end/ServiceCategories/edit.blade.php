@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-body">
 
-            <form method="post" action="{{route($routeName.'.update',$row->id)}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('Categories.update',$row->id)}}" enctype="multipart/form-data">
                 @method('PATCH')
             @include('back-end.ServiceCategories.form')
 

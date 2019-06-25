@@ -56,7 +56,7 @@
                     {{$row->name}}
                 </td>
                 <td>
-                  <img src="{{url($row->image)}}" width="80px" height="80px">
+                  <img src="{{ asset('storage/'.$row->image)}}" width="80px" height="80px">
                 </td>
                 <td>
                     {{$row->order}}
@@ -66,8 +66,18 @@
                 </td>
 
                 <td class="td-actions">
-                    @include('back-end.shared.buttons.edit')
-                    @include('back-end.shared.buttons.delete')
+
+                    @Button([
+                        'type' => 'Edit',
+                        'Single_title'=>'page_title.service',
+                        'route' => route('Services.edit', $row->id)
+                    ])
+                    @endButton
+
+                    @Button(['type' => 'Delete',
+                        'Single_title'=>'page_title.service',
+                        'route' => route('Services.destroy', $row->id)
+                    ])@endButton
 
                 </td>
 

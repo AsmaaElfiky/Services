@@ -7,7 +7,11 @@ return [
     'service' => ' Service',
     'users' => ' Users',
     'serviceCategories'=>'Service Categories',
-    'serviceCategory'=>'Service Category'
+    'serviceCategory'=>'Service Category',
+
+    ///////Users///
+    'users'=>'Users',
+    'user'=>'User',
 
 
 ];

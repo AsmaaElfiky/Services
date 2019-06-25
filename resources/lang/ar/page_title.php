@@ -8,6 +8,9 @@ return [
     'serviceCategories' =>'التصنيفات',
     'serviceCategory'=>'تصنيف',
 
+    ////Users///////
+    'users' => ' المستخدمين',
+    'user' => ' المستخدم',
 
 
 ];

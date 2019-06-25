@@ -35,7 +35,7 @@
                                                 {{$row->name}}
                                             </td>
                                             <td>
-                                                <img src="{{url($row->image)}}" width="80px" height="80px">
+                                                <img src="{{ asset('storage/'.$row->image)}}" width="80px" height="80px">
                                             </td>
                                             <td>
                                                 {{$row->order}}

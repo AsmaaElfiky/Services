@@ -9,6 +9,7 @@ $factory->define(App\Models\Service::class,
         $order = 1;
         return [
             'id' => $id++,
+            'user_id'=>'1',
             'name' => $faker->name,
             'image' => 'images/400.jpg',
             'order' => $order++,

@@ -21,26 +21,20 @@ class ServiceCategories extends Controller
 
     public  function  index(){
 
-        $SmoduleName=$this->getClassNameSingle();
-        $routeName ='Categories';
-        $folderName ='ServiceCategories';
+
         $rows = $this->model;
         $rows=$this->filter($rows);
         $rows =$rows->paginate(10);
 
         return view('back-end.ServiceCategories.index',
-            compact('rows','SmoduleName','folderName','routeName'));
+            compact('rows'));
     }
 
 
     public function create(){
 
 
-        $folderName ='ServiceCategories';
-        $routeName ='Categories';
-
-
-        return view('back-end.ServiceCategories.add',compact('routeName','folderName'));
+        return view('back-end.ServiceCategories.add');
 
     }
 
@@ -58,12 +52,10 @@ class ServiceCategories extends Controller
 
 
     public function edit($id){
-        $routeName ='Categories';
-        $folderName ='ServiceCategories';
 
         $row = $this->model->findorfail($id);
 
-        return view('back-end.ServiceCategories.edit')->with(compact('row','routeName','folderName'));
+        return view('back-end.ServiceCategories.edit')->with(compact('row'));
     }
 
 

@@ -1,26 +1,44 @@
 @extends('back-end.layout.app')
 
 @section('title')
-    Users
+ @@lang('page_title.users')
 @endsection
 
 
 @section('content')
 
 
-    @component('back-end.shared.edit',['moduleName'=>$moduleName,'pageDesc'=>$pageDesc])
+
+@section('content')
+
+    @PageHeader([
+
+    'pageTitle' => 'page_title.user',
+    'pageDescription' => 'page_description.update',
+
+    'back'=>['page_title'=>'page_title.users','route'=>route('Users.index')]
+    ])
+    @endPageHeader
 
 
+<div class="row">
 
-            <form method="post" action="{{route($routeName.'.update',$row->id)}}" enctype="multipart/form-data">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+
+            <form method="post" action="{{route('Users.update',$row->id)}}" enctype="multipart/form-data">
                 @method('PATCH')
             @include('back-end.Users.form')
 
-                <button type="submit" class="btn btn-primary pull-right">Update User</button>
+            @Button(['type'=>'update',
+            'Single_title'=>'page_title.user'
+            ])
+            @endButton
                 <div class="clearfix"></div>
             </form>
 
-        @endcomponent
+
 
     <script>
 

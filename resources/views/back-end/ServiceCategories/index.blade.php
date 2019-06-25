@@ -54,8 +54,17 @@
                 </td>
 
                 <td class="td-actions">
-                    @include('back-end.shared.buttons.edit')
-                    @include('back-end.shared.buttons.delete')
+                    @Button([
+                        'type' => 'Edit',
+                        'Single_title'=>'page_title.serviceCategory',
+                        'route' => route('Categories.edit', $row->id)
+                    ])
+                    @endButton
+
+                    @Button(['type' => 'Delete',
+                        'Single_title'=>'page_title.serviceCategory',
+                        'route' => route('Categories.destroy', $row->id)
+                    ])@endButton
 
                 </td>
 

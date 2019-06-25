@@ -19,6 +19,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->integer('order');
+            $table->integer('user_id');
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('service_categories')->onDelete('cascade');
             $table->timestamps();

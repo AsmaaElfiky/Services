@@ -12,4 +12,8 @@ return [
 
     'table_item_category_name'=>'Category',
 
+
+    'table_item_user_email' =>'Email',
+    'table_item_user_name' =>'Name',
+
 ];

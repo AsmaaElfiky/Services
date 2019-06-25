@@ -24,8 +24,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                <form method="post" action="{{route($routeName.'.store')}}" enctype="multipart/form-data">
-                           @include('back-end.'.$folderName.'.form')
+                <form method="post" action="{{route('Categories.store')}}" enctype="multipart/form-data">
+                           @include('back-end.ServiceCategories.form')
 
            @Button(['type'=>'submit',
                     'Single_title'=>'page_title.serviceCategory'

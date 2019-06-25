@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\BackEnd;
 use App\Http\Controllers\Controller;
-
+use App\Models\Service;
+use App\Services\ServicesService\ServicesService;
 use App\Http\Requests\BackEnd\Services\StoreRequest;
 use App\Http\Requests\BackEnd\Services\updateRequest;
-use App\Models\Service;
-use Hash;
+
+
 use App\Models\ServiceCategory;
 
 class Services extends Controller
 {
-    private $model;
+
     private $modelDependent;
-    public function __construct(Service $model , ServiceCategory $modelDependent)
+    public function __construct(ServicesService $service ,Service $model, ServiceCategory $modelDependent)
     {
 
+        $this->service = $service;
         $this->model = $model;
         $this->modelDependent = $modelDependent;
     }
@@ -23,44 +25,35 @@ class Services extends Controller
 
     public  function  index(){
 
-        $SmoduleName=$this->getClassNameSingle();
-        $routeName ='Services';
-        $folderName ='Services';
-        $rows = $this->model;
-        $rows=$this->filter($rows);
-         $rows =$rows->paginate(10);
+        $rows = $this->service->getServices();
+
         return view('back-end.Services.index',
-            compact('rows','SmoduleName','folderName','routeName'));
+            compact('rows'));
     }
 
 
 
     public function create(){
 
-        $routeName =$this->getClassName();
-        $folderName =$routeName;
         $ServiceCategories =$this->modelDependent::get(['id','category_name']);
-        return view('back-end.'.$this->getClassName().'.add',compact('routeName','folderName' ,'ServiceCategories'));
+        return view('back-end.Services.add',compact('ServiceCategories'));
 
     }
 
 
     public function edit($id){
-        $routeName =$this->getClassName();
-        $folderName =$routeName;
 
-        $row = $this->model->findorfail($id);
-
+        $row = $this->service->getService($id);
         $ServiceCategories =$this->modelDependent::get(['id','category_name']);
-        return view('back-end.'.$this->getClassName().'.edit')->with(compact('row','ServiceCategories','routeName','folderName'));
+        return view('back-end.Services.edit')->with(compact('row','ServiceCategories'));
     }
 
 
     public function destroy($id){
 
-        $this->model->findorfail($id)->delete();
+        $this->service->getService($id)->delete();
 
-        return redirect()->route($this->getClassName().'.index')->with('success', 'Data Deleted!');
+        return redirect()->route('Services.index')->with('success', 'Data Deleted!');
 
     }
 
@@ -69,60 +62,34 @@ class Services extends Controller
 
     public function store(StoreRequest $request){
 
-        $input = $request->all();
-
         if ($request->hasFile('image')) {
 
-            $name = str_replace('.','k',str_replace('/','2',Hash::make(time())));
-            $image = $request->file('image');
-            $ext = $image->getClientOriginalExtension();
-            $destinationPath = public_path('images/');
-            $full_name = $name.'.'.$ext;
-
-            $image->move($destinationPath, $full_name);
-            $input['image'] ='/images/'.$full_name;
-
+            $path = $request->file('image')->storeAs(
+                'Services', $request->name.'-service.'.$request->image->extension()
+            );
         }
 
-        $this->model->create($input);
+        $this->model->create(
+            [
+            'name'=>$request->name,
+            'order'=>$request->order,
+            'category_id'=>$request->category_id,
+            'image'=>$path,
+            'user_id'=>Auth::user()->id
+            ]);
         return redirect('admin/Services')->with('success', 'Data saved!');
     }
 
 
 
-    public function update(updateRequest $request , $id){
-        $input =  $request->except(['_token']);
+    public function update(updateRequest $request ,$id){
 
-        if ($request->hasFile('image')) {
+        $this->service->updateService($request,$id);
 
-            $name = str_replace('.','k',str_replace('/','2',Hash::make(time())));
-            $image = $request->file('image');
-            $ext = $image->getClientOriginalExtension();
-            $destinationPath = public_path('images/');
-            $full_name = $name.'.'.$ext;
-
-            $image->move($destinationPath, $full_name);
-            $input['image'] ='/images/'.$full_name;
-
-        }
-        $this->model->findorfail($id)->update($input);
         return redirect('admin/Services')->with('success', 'Data Updated!');
 
-
-    }
-    protected function filter($rows){
-
-        return $rows;
     }
 
-    protected function getClassName(){
 
-     return  str_plural(class_basename($this->model));
-    }
-
-    protected function getClassNameSingle(){
-
-        return  str_singular(class_basename($this->model));
-    }
 
 }

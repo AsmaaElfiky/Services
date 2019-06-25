@@ -35,10 +35,13 @@ Route::namespace('BackEnd')->prefix('admin')->group(function() {
 
     Route::get('/', 'Home@home')->name('admin.home');
 
-        Route::resource('Users', 'Users')->except(['show']);
-        Route::resource('Services', 'Services')->except(['show']);
 
-        Route::resource('Services/Categories', 'ServiceCategories')->except(['show']);
+        Route::resource('Users', 'Users')->except(['show'])->middleware(['role:admin']);
+
+
+        Route::resource('Services', 'Services')->except(['show'])->middleware(['role:admin|moderator']);
+
+        Route::resource('Services/Categories', 'ServiceCategories')->except(['show'])->middleware(['role:admin|moderator']);
 
 
     Route::post ('/search', function () {

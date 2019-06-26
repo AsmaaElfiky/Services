@@ -14,8 +14,9 @@ class Users extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            'image' => 'images/400.jpg',
+            'image' => 'Users/400.jpg',
             'name' => 'Asmaa',
+            'group' => 'super-admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('0123456789'),
             'remember_token' => str_random(10),

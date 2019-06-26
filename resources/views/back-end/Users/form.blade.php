@@ -74,10 +74,12 @@ $input ="image";
 
             <label class="bmd-label-floating">Group</label>
 
-            <select id="" name="{{$input}}" class="form-control" value=" old($input)}}">
+            <select id="" name="{{$input}}" class="form-control" value="{{isset($row)? $row->$input : old($input)}}">
 
-                    <option class="form-control  dark-edition" {{isset($row)&&$row->{$input}=='admin' ?'selected':''}} value="admin" >Admin</option>
-                    <option class="form-control  dark-edition" {{isset($row)&&$row->{$input}=='user' ?'selected':''}} value="user">User</option>
+            @foreach ($roles as $role)
+
+            <option class="form-control  dark-edition" {{isset($row) && ($row->$input== $role->name) ? 'selected':''}} value="{{ $role->name }}" >{{ $role->name }}</option>
+            @endforeach
 
             </select>
             @if ($errors->has($input))

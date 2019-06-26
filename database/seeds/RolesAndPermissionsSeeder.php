@@ -13,18 +13,24 @@ class RolesAndPermissionsSeeder extends Seeder
         // create permissions
         Permission::create(['name' => 'edit users']);
         Permission::create(['name' => 'delete users']);
-        Permission::create(['name' => 'publish users']);
-        Permission::create(['name' => 'unpublish users']);
+        Permission::create(['name' => 'add users']);
+
+
+        Permission::create(['name' => 'edit service']);
+        Permission::create(['name' => 'delete service']);
+        Permission::create(['name' => 'add service']);
+
 
         // create roles and assign created permissions
 
         // this can be done as separate statements
-        $role = Role::create(['name' => 'admin']);
-        $role->givePermissionTo('edit users');
+        $role = Role::create(['name' => 'moderator']);
+        $role->givePermissionTo(
+            ['add service',
+             'edit service',
+             'delete service']);
 
-        // or may be done by chaining
-        $role = Role::create(['name' => 'moderator'])
-            ->givePermissionTo(['publish users', 'unpublish users']);
+
 
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());

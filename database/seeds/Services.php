@@ -11,6 +11,6 @@ class Services extends Seeder
      */
     public function run()
     {
-        factory('App\Models\Service', 30)->create();
+        factory('App\Models\Service', 10)->create();
     }
 }

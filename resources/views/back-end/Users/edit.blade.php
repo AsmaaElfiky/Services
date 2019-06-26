@@ -1,7 +1,7 @@
 @extends('back-end.layout.app')
 
 @section('title')
- @@lang('page_title.users')
+ @lang('page_title.users')
 @endsection
 
 

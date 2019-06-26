@@ -56,7 +56,7 @@ $input ="image";
             <label class="bmd-label-floating">Category</label>
             <select class="form-control" name="{{$input}}" value="{{isset($row)? $row->$input : old($input)}}">
                 @foreach ($ServiceCategories as $cat)
-                <option value="{{ $cat->id }}" >
+                <option value="{{ $cat->id }}" {{isset($row)&& $row->$input == $cat->id ? 'selected' : ''}}>
                      {{ $cat->category_name }}
                  </option>
                 @endforeach

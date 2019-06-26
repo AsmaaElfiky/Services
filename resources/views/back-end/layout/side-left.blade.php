@@ -8,16 +8,16 @@
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
-        @hasanyrole('admin|super-admin')
+        @hasrole('super-admin')
         <li class="br-menu-item">
             <a href="{{URL::to('admin/Users')}}" class="br-menu-link {{ is_active('Users') }}">
                 <i class="menu-item-icon icon ion-ios-people-outline tx-24"></i>
                 <span class="menu-item-label">{{App::islocale('en')?'Users' : 'المستخدمين'}}</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-      @endhasanyrole
+      @endhasrole
 
-      @hasanyrole('admin|moderator')
+      @hasanyrole('super-admin|moderator')
         <li class="br-menu-item">
              <a href="#" class="br-menu-link with-sub {{ is_active('Services') }}">
                 <i class="menu-item-icon icon ion-ios-list-outline tx-24"></i>

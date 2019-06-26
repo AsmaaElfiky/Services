@@ -36,12 +36,12 @@ Route::namespace('BackEnd')->prefix('admin')->group(function() {
     Route::get('/', 'Home@home')->name('admin.home');
 
 
-        Route::resource('Users', 'Users')->except(['show'])->middleware(['role:admin']);
+        Route::resource('Users', 'Users')->except(['show'])->middleware(['role:super-admin']);
 
 
-        Route::resource('Services', 'Services')->except(['show'])->middleware(['role:admin|moderator']);
+        Route::resource('Services', 'Services')->except(['show'])->middleware(['role:super-admin|moderator']);
 
-        Route::resource('Services/Categories', 'ServiceCategories')->except(['show'])->middleware(['role:admin|moderator']);
+        Route::resource('Services/Categories', 'ServiceCategories')->except(['show'])->middleware(['role:super-admin|moderator']);
 
 
     Route::post ('/search', function () {

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\BackEnd;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\BackEnd\Users\StoreRequest;
 use App\Http\Requests\BackEnd\Users\UpdateRequest;
 use App\Models\User;
-use Hash;
+
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -31,16 +31,17 @@ class Users extends Controller
 
     public function create(){
 
-        return view('back-end.Users.add');
+     $roles = DB::table('roles')->get();
+     return view('back-end.Users.add',compact('roles'));
 
     }
 
 
     public function edit($id){
 
+        $roles = DB::table('roles')->get();
         $row = $this->model->findorfail($id);
-
-        return view('back-end.Users.edit')->with(compact('row'));
+        return view('back-end.Users.edit')->with(compact('row','roles'));
     }
 
 
@@ -51,19 +52,16 @@ class Users extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         if ($request->hasFile('image')) {
+            $path = $request->file('image')->storeAs(
+                'Users', $request->name.'-user.'.$request->image->extension()
+            );
 
-            $name = str_replace('.','k',str_replace('/','2',Hash::make(time())));
-            $image = $request->file('image');
-            $ext = $image->getClientOriginalExtension();
-            $destinationPath = public_path('images/');
-            $full_name = $name.'.'.$ext;
-
-            $image->move($destinationPath, $full_name);
-            $input['image'] ='/images/'.$full_name;
+            $input['image'] =$path;
 
         }
 
-        $this->model->create($input);
+        $group = $input['group'];
+        $this->model->create($input)->assignRole($group);
         return redirect('admin/Users')->with('success', 'Data saved!');
     }
 
@@ -74,23 +72,29 @@ class Users extends Controller
         $input['password'] = bcrypt($input['password']);
         if ($request->hasFile('image')) {
 
-            $name = str_replace('.','k',str_replace('/','2',Hash::make(time())));
-            $image = $request->file('image');
-            $ext = $image->getClientOriginalExtension();
-            $destinationPath = public_path('images/');
-            $full_name = $name.'.'.$ext;
-
-            $image->move($destinationPath, $full_name);
-            $input['image'] ='/images/'.$full_name;
+            $path = $request->file('image')->storeAs(
+                'Users', $request->name.'-user.'.$request->image->extension()
+            );
+            $input['image'] =$path;
 
         }
-        $this->model->findorfail($id)->update($input);
+        $group = $input['group'];
+        $user = $this->model->findorfail($id);
+        $user->syncRoles($group);
+        $user->update($input);
         return redirect('admin/Users')->with('success', 'Data Updated!');
 
 
     }
 
 
+    public function destroy($id){
+
+        $this->model->findorfail($id)->delete();
+
+        return redirect()->route('Users.index')->with('success', 'Data Deleted!');
+
+    }
 
 
 
